@@ -1,0 +1,3 @@
+# Cursor IDE関連ファイルを除外
+.cursor/
+
