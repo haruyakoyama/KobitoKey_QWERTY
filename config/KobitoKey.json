@@ -69,4 +69,35 @@
       "description": "右側トラックボール (SPI PMW3610, id=0)"
     }
   ]
+  ,
+  "pointing_devices": [
+    {
+      "id": "tb_left_pd",
+      "name": "Trackball Left",
+      "type": "trackball",
+      "side": "left",
+      "controls": [
+        {"name": "left", "action": "rel_x_neg", "position": {"x": 1.0, "y": 3}},
+        {"name": "right", "action": "rel_x_pos", "position": {"x": 2.0, "y": 3}},
+        {"name": "up", "action": "rel_y_neg", "position": {"x": 1.5, "y": 2.6}},
+        {"name": "down", "action": "rel_y_pos", "position": {"x": 1.5, "y": 3.4}}
+      ]
+    },
+    {
+      "id": "tb_right_pd",
+      "name": "Trackball Right",
+      "type": "trackball",
+      "side": "right",
+      "controls": [
+        {"name": "left", "action": "rel_x_neg", "position": {"x": 9.0, "y": 3}},
+        {"name": "right", "action": "rel_x_pos", "position": {"x": 10.0, "y": 3}},
+        {"name": "up", "action": "rel_y_neg", "position": {"x": 9.5, "y": 2.6}},
+        {"name": "down", "action": "rel_y_pos", "position": {"x": 9.5, "y": 3.4}}
+      ]
+    }
+  ],
+  "trackballs": [
+    {"id": "tb_left", "x": 1.5, "y": 3},
+    {"id": "tb_right", "x": 9.5, "y": 3}
+  ]
 }
