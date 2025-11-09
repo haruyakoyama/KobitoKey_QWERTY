@@ -51,5 +51,22 @@
       ]
     }
   },
-  "sensors": []
+  "sensors": [
+    {
+      "id": "tb_left",
+      "name": "Trackball Left",
+      "type": "trackball",
+      "side": "left",
+      "position": { "x": 1.5, "y": 3 },
+      "description": "左側トラックボール (SPI PMW3610, id=0)"
+    },
+    {
+      "id": "tb_right",
+      "name": "Trackball Right",
+      "type": "trackball",
+      "side": "right",
+      "position": { "x": 9.5, "y": 3 },
+      "description": "右側トラックボール (SPI PMW3610, id=0)"
+    }
+  ]
 }
