@@ -47,16 +47,7 @@
 				{ "row": 3, "col": 6, "x": 7, "y": 3 },
 				{ "row": 3, "col": 7, "x": 8, "y": 3 },
 				{ "row": 3, "col": 8, "x": 9.5, "y": 3 },
-				{ "row": 3, "col": 9, "x": 10.5, "y": 3 },
-
-				{ "row": 4, "col": 0, "x": 1.5, "y": 6.0, "label": "TBL↑", "id": "tb_left_up" },
-				{ "row": 4, "col": 1, "x": 1.5, "y": 6.6, "label": "TBL↓", "id": "tb_left_down" },
-				{ "row": 4, "col": 2, "x": 1.0, "y": 6.3, "label": "TBL←", "id": "tb_left_left" },
-				{ "row": 4, "col": 3, "x": 2.0, "y": 6.3, "label": "TBL→", "id": "tb_left_right" },
-				{ "row": 4, "col": 4, "x": 9.5, "y": 6.0, "label": "TBR↑", "id": "tb_right_up" },
-				{ "row": 4, "col": 5, "x": 9.5, "y": 6.6, "label": "TBR↓", "id": "tb_right_down" },
-				{ "row": 4, "col": 6, "x": 9.0, "y": 6.3, "label": "TBR←", "id": "tb_right_left" },
-				{ "row": 4, "col": 7, "x": 10.0, "y": 6.3, "label": "TBR→", "id": "tb_right_right" }
+				{ "row": 3, "col": 9, "x": 10.5, "y": 3 }
 			]
 		}
 	}
