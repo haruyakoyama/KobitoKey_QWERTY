@@ -41,23 +41,31 @@ shields_list → [Kconfig.shield] → SHIELD_KOBITOKEY_* → [Kconfig.defconfig]
 [KobitoKey.zmk.yml]       ┘
 ```
 
-### 編集ガイド
+### 編集カテゴリ別ガイド
 
-| ファイル | 役割 | 読み込み順・依存関係 | 変更したくなるタイミング |
+#### よく調整するファイル（キー配列・ポインティング・BLE 挙動を変えたい時）
+
+| パス | 役割 | 読み込み順・依存関係 | 変更理由の例 |
 | --- | --- | --- | --- |
-| [Kconfig.shield](config/boards/shields/KobitoKey/Kconfig.shield) | `SHIELD_KOBITOKEY_LEFT` と `SHIELD_KOBITOKEY_RIGHT` を `west build` に伝える | `west build -S` で Shield 列挙 → `shields_list_contains` マクロが評価 | 新しいハーフ名を増やす時や、Shield 名を変更したい時 |
-| [Kconfig.defconfig](config/boards/shields/KobitoKey/Kconfig.defconfig) | Shield 有効時の既定 Kconfig を定義 | `Kconfig.shield` で真になった時のみ取り込まれる | スプリット機能や SPI、ポイントデバイス機能の既定値を変えたい時 |
-| [KobitoKey.zmk.yml](config/boards/shields/KobitoKey/KobitoKey.zmk.yml) | Shield のメタデータ（`requires`, `features`）を宣言 | `west build` で Shield を解決する際に参照 | 対応ボード追加や URL を更新したい時 |
-| [kobitokey.dtsi](config/boards/shields/KobitoKey/kobitokey.dtsi) | 4×10 行列スキャン、`matrix-transform`, split 入力定義、`chosen` の物理レイアウト指定を集約 | 両 overlay から `#include` され、`KobitoKey-layouts.dtsi` をさらに取り込む | 行列配線を変更する、split 入力 ID を変える、物理レイアウトを切り替える場合 |
-| [KobitoKey-layouts.dtsi](config/boards/shields/KobitoKey/KobitoKey-layouts.dtsi) | `zmk,physical-layout` とキー座標を列挙 | `kobitokey.dtsi` 内の `physical_layout_0` が参照 | Studio や keymap-drawer のキー配置を修正したい時 |
-| [KobitoKey_left.overlay](config/boards/shields/KobitoKey/KobitoKey_left.overlay) | 左手側のデバイスツリー。PMW3610（`tb_left`）、センサー回転、`zip_temp_layer` を定義し、RGB マウス操作を制御 | `kobitokey.dtsi` を読み込み、`tb_left_listener` と zip 系プロセッサを有効化 | 左側トラックボールの感度、オートマウスへの遷移時間、スクロール方向を変える時 |
-| [KobitoKey_right.overlay](config/boards/shields/KobitoKey/KobitoKey_right.overlay) | 右手側のデバイスツリー。列オフセット、右トラックボール、split 送信を設定 | `kobitokey.dtsi` を読み込み、`tb_right_split` を通じて中央へ出力 | 右トラックボールの CPI、split 送信方式、列オフセットを調整する時 |
-| [KobitoKey_left.conf](config/boards/shields/KobitoKey/KobitoKey_left.conf) | 左手（セントラル）の `prj.conf`。BLE 役割、PMW3610 設定、RGB LED ウィジェット、バッテリー報告を制御 | `west build -b seeeduino_xiao_ble -- -DSHIELD=KobitoKey_left` でマージ | セントラル側の BLE 機能、RGB 層色、PMW3610 パラメータを変更したい時 |
-| [KobitoKey_right.conf](config/boards/shields/KobitoKey/KobitoKey_right.conf) | 右手（ペリフェラル）の `prj.conf`。PMW3610 と BLE ペリフェラル設定を担当 | `west build ... -DSHIELD=KobitoKey_right` で読み込まれる | 右手の CPI や BLE 動作、バッテリー報告方針を調整する時 |
+| [config/KobitoKey.keymap](config/KobitoKey.keymap) | 論理レイヤーとコンボを定義 | `zmk,keymap` ノードとして直接ビルドに含まれる | レイヤー構成、モディファイア、BT 操作の割り当てを変えたい時 |
+| [config/KobitoKey.json](config/KobitoKey.json) | Studio や keymap-drawer 向けのキー座標 | `keymap.yaml` 生成や図の描画で参照 | レイアウト図やキーの描画位置を更新したい時 |
+| [KobitoKey_left.overlay](config/boards/shields/KobitoKey/KobitoKey_left.overlay) | 左手側トラックボール、センサー回転、`zip_temp_layer` を制御 | `kobitokey.dtsi` を include し、`tb_left_listener` や zip 系プロセッサを有効化 | 左トラックボールの CPI、スクロール方向、オートマウス遷移を調整したい時 |
+| [KobitoKey_right.overlay](config/boards/shields/KobitoKey/KobitoKey_right.overlay) | 右手側トラックボール、列オフセット、split 送信を制御 | `kobitokey.dtsi` を include し、`tb_right_split` を介して送信 | 右トラックボールの CPI や送信方法、行列オフセットを変えたい時 |
+| [KobitoKey_left.conf](config/boards/shields/KobitoKey/KobitoKey_left.conf) | セントラル側の `prj.conf`。BLE、RGB LED、PMW3610 を設定 | `west build -b seeeduino_xiao_ble -- -DSHIELD=KobitoKey_left` でマージ | セントラル役割の BLE 動作、RGB 層色、PMW3610 パラメータを調整したい時 |
+| [KobitoKey_right.conf](config/boards/shields/KobitoKey/KobitoKey_right.conf) | ペリフェラル側の `prj.conf`。PMW3610 と BLE ペリフェラルを設定 | `west build ... -DSHIELD=KobitoKey_right` でマージ | 右手の CPI、BLE 設定、バッテリー報告を変えたい時 |
 
-上記以外の関連ファイル:
-- `config/west.yml` で ZMK 本体と追加モジュールを取得。
-- `config/KobitoKey.keymap` が論理レイヤーを定義し、`kobitokey.dtsi` の行列と結び付ける。
-- `zephyr/module.yml` が `config` を board root に登録する。
+#### 基本的に固定で、配線や構成を大幅に変える場合のみ触るファイル
 
-この README を足掛かりに、「どこを編集すれば目的の挙動になるか」「どのファイルがどこに読み込まれるか」を即座に追えるようにしました。
+| パス | 役割 | 読み込み順・依存関係 | 変更理由の例 |
+| --- | --- | --- | --- |
+| [Kconfig.shield](config/boards/shields/KobitoKey/Kconfig.shield) | `SHIELD_KOBITOKEY_LEFT/RIGHT` を `west build` に登録 | `west build -S` 時に `shields_list_contains` が評価 | Shield 名称を変える、新しいバリエーションを追加する時 |
+| [Kconfig.defconfig](config/boards/shields/KobitoKey/Kconfig.defconfig) | Shield 有効時の既定 Kconfig を宣言 | `SHIELD_KOBITOKEY_*` が真になった際のみ読み込み | スプリット機能や SPI を既定で無効化したい特別事情がある時 |
+| [KobitoKey.zmk.yml](config/boards/shields/KobitoKey/KobitoKey.zmk.yml) | Shield メタデータ（`requires`, `features`）を ZMK に提示 | `west build` が Shield を解決する際に参照 | 対応ボードを追加する、リポジトリ URL を変える時 |
+| [kobitokey.dtsi](config/boards/shields/KobitoKey/kobitokey.dtsi) | 4×10 行列スキャン、`matrix-transform`, split 入力、物理レイアウト選択を一括定義 | 左右 overlay から `#include` され、`KobitoKey-layouts.dtsi` を参照 | 行列配線や split デバイス構造を作り直す時 |
+| [KobitoKey-layouts.dtsi](config/boards/shields/KobitoKey/KobitoKey-layouts.dtsi) | `zmk,physical-layout` とキー座標を列挙 | `kobitokey.dtsi` の `physical_layout_0` が参照 | 物理キー配置を大きく変更する、キー数を増減させる時 |
+
+関連ファイルの位置づけ:
+- `config/west.yml` が ZMK 本体と PMW3610 ドライバ、sensor_rotation、RGB LED ウィジェットを取得。
+- `zephyr/module.yml` が `config` を board root として登録。
+
+どの設定をどこで行うか迷った場合は、まず「よく調整するファイル」の表を確認し、配線や Shield 自体を作り直す時のみ「基本的に固定」の表を参照してください。
