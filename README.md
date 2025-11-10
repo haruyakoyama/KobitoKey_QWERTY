@@ -7,12 +7,12 @@
 
 ## レイヤー配置
 
-| Layer | 名称 | 主な機能 | レイアウト |
-| --- | --- | --- | --- |
-| 0 | QWERTY | ベース入力 | <img width="210" alt="Layer0" src="https://github.com/user-attachments/assets/ef0797b7-a63f-4632-912d-9b5d0115769f" /> |
-| 1 | Number & Arrow | 数字列、矢印、メディアキー | <img width="210" alt="Layer1" src="https://github.com/user-attachments/assets/d6347b3c-a238-4278-bacd-e58195774d0e" /> |
-| 2 | Bluetooth & Function | BT ペアリング、ブートローダー、設定操作 | <img width="210" alt="Layer2" src="https://github.com/user-attachments/assets/f1f7cc93-fbd8-4a98-84ea-c8c36ad3952d" /> |
-| 3 | Auto Mouse | 自動遷移するマウスレイヤーとスクロール処理 | <img width="210" alt="Layer3" src="https://github.com/user-attachments/assets/2efe5275-e460-41bc-ae45-0c0665435268" /> |
+| Layer | 名称 | 主な機能 |
+| --- | --- | --- |
+| 0 | QWERTY | ベース入力 |
+| 1 | Number & Arrow | 数字列、矢印、メディアキー |
+| 2 | Bluetooth & Function | BT ペアリング、ブートローダー、設定操作 |
+| 3 | Auto Mouse | 自動遷移するマウスレイヤーとスクロール処理 |
 
 ## 主要ディレクトリ
 - `build.yaml` ― `west build -b seeeduino_xiao_ble -s app -d build` 用のビルドマトリクス。左（`KobitoKey_left rgbled_adapter`）、右（`KobitoKey_right rgbled_adapter`）、`settings_reset` を一括ビルド。
