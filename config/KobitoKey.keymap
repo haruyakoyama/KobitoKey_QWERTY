@@ -7,6 +7,34 @@
 / {
     combos { compatible = "zmk,combos"; };
 
+    macros {
+        macros {
+            ZMK_MACRO(globe_swipe_left,
+                bindings = <&macro_press &kp LANG1>,
+                           <&macro_tap &kp LEFT_ARROW>,
+                           <&macro_release &kp LANG1>;
+            )
+
+            ZMK_MACRO(globe_swipe_right,
+                bindings = <&macro_press &kp LANG1>,
+                           <&macro_tap &kp RIGHT_ARROW>,
+                           <&macro_release &kp LANG1>;
+            )
+
+            ZMK_MACRO(globe_swipe_up,
+                bindings = <&macro_press &kp LANG1>,
+                           <&macro_tap &kp UP_ARROW>,
+                           <&macro_release &kp LANG1>;
+            )
+
+            ZMK_MACRO(globe_swipe_down,
+                bindings = <&macro_press &kp LANG1>,
+                           <&macro_tap &kp DOWN_ARROW>,
+                           <&macro_release &kp LANG1>;
+            )
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
