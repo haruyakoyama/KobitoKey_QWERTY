@@ -61,31 +61,6 @@
         status = "okay";
         rotation-angle = <24>;
     };
-    /* トラックボール方向→キー出力 */
-    tb_right_arrow_mapper: tb_right_arrow_mapper {
-        compatible = "zmk,input-processor-dir-keys";
-        #input-processor-cells = <0>;
-        threshold = <6>;
-        bindings = <
-            &kp RIGHT_ARROW
-            &kp LEFT_ARROW
-            &kp DOWN_ARROW
-            &kp UP_ARROW
-        >;
-    };
-
-    tb_left_globe_mapper: tb_left_globe_mapper {
-        compatible = "zmk,input-processor-dir-keys";
-        #input-processor-cells = <0>;
-        threshold = <6>;
-        bindings = <
-            &globe_swipe_right
-            &globe_swipe_left
-            &globe_swipe_down
-            &globe_swipe_up
-        >;
-    };
-
 };
 
 &tb_left_listener {
@@ -99,10 +74,6 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
-    trackball_macros {
-        layers = <5>;
-        input-processors = <&tb_left_globe_mapper>;
-    };
 };
 
 / {
@@ -119,11 +90,6 @@
     input-processors =
         <&sensor_rotation_right>,
         <&zip_temp_layer 3 5000>; /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
-
-    arrow_keys {
-        layers = <5>;
-        input-processors = <&tb_right_arrow_mapper>;
-    };
 };
 
 &zip_temp_layer {

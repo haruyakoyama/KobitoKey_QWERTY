@@ -15,47 +15,6 @@
     };
 
     macros {
-        macros {
-            ZMK_MACRO(globe_swipe_left,
-
-            bindings =
-                <&macro_press &kp LANG1>,
-                <&macro_tap &kp LEFT_ARROW>,
-                <&macro_release &kp LANG1>;
-
-            )
-
-            ZMK_MACRO(
-
-            globe_swipe_right,
-            bindings =
-                <&macro_press &kp LANG1>,
-                <&macro_tap &kp RIGHT_ARROW>,
-                <&macro_release &kp LANG1>;
-
-            )
-
-            ZMK_MACRO(
-
-            globe_swipe_up,
-            bindings =
-                <&macro_press &kp LANG1>,
-                <&macro_tap &kp UP_ARROW>,
-                <&macro_release &kp LANG1>;
-
-            )
-
-            ZMK_MACRO(
-
-            globe_swipe_down,
-            bindings =
-                <&macro_press &kp LANG1>,
-                <&macro_tap &kp DOWN_ARROW>,
-                <&macro_release &kp LANG1>;
-
-            )
-        };
-
         windowright: windowright {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -137,17 +96,9 @@
 &none   &none   &none   &none   &none   &bt BT_SEL 0   &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_CLR  &bt BT_CLR_ALL
 &none   &none   &none   &none   &none   &kp C_BRI_UP   &kp C_VOLUME_UP  &kp K_MUTE    &none       &none
 &none   &none   &none   &none   &none   &kp C_BRI_DEC  &kp C_VOL_DN     &none         &none       &none
-&trans  &trans  &trans  &trans  &trans  &trans         &trans           &trans        &to 0       &to 5
+&trans  &trans  &trans  &trans  &trans  &trans         &trans           &trans        &to 0       &to 0
             >;
         };
 
-        trackball {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &to 0   &to 0
-            >;
-        };
     };
 };
