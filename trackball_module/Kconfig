@@ -1,0 +1,7 @@
+menu "KobitoKey Trackball Helpers"
+
+config KOBITOKEY_DIR_KEY_PROCESSOR
+    bool "Enable directional key processor for trackballs"
+    default y
+
+endmenu

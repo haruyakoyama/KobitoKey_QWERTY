@@ -1,3 +1,6 @@
 build:
+  cmake: trackball_module
+  kconfig: trackball_module/Kconfig
   settings:
     board_root: config
+    dts_root: trackball_module

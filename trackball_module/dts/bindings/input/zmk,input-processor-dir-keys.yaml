@@ -1,0 +1,24 @@
+# Copyright (c) 2024
+# SPDX-License-Identifier: MIT
+
+description: Convert relative pointing movement into directional key bindings
+
+compatible: "zmk,input-processor-dir-keys"
+
+include: ip_zero_param.yaml
+
+properties:
+  x-code:
+    type: int
+    description: Relative input code used for the horizontal axis (default INPUT_REL_X)
+  y-code:
+    type: int
+    description: Relative input code used for the vertical axis (default INPUT_REL_Y)
+  threshold:
+    type: int
+    description: Amount of movement units required before firing a binding (default 8)
+  bindings:
+    type: phandle-array
+    required: true
+    description: >
+      Four bindings ordered as X+, X-, Y+, Y-. Use &none for directions you want to ignore.
