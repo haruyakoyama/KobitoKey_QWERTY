@@ -1,7 +1,8 @@
 # KobitoKey_QWERTY
 
 ## プロジェクト概要
-[小人キー](https://note.com/11_50iii/n/n75cff4d3502c#48b22323-074f-4017-9605-dbc51b4714ae)向けの ZMK ファームウェアです。左右の Seeeduino XIAO BLE に PMW3610 トラックボールを載せ、左手側をセントラル、右手側をペリフェラルとして動かします。`config` ディレクトリを board root に指定し、独自シールドと周辺モジュール（PMW3610 ドライバ、sensor_rotation、RGB LED ウィジェット）を West で取得します。
+[小人キー](https://note.com/11_50iii/n/n75cff4d3502c#48b22323-074f-4017-9605-dbc51b4714ae)向けの ZMK ファームウェアです。作者の方のリポジトリをフォークし、自分用にカスタム中。
+左右の Seeeduino XIAO BLE に PMW3610 トラックボールを載せ、左手側をセントラル、右手側をペリフェラルとして動かします。`config` ディレクトリを board root に指定し、独自シールドと周辺モジュール（PMW3610 ドライバ、sensor_rotation、RGB LED ウィジェット）を West で取得します。
 
 ビルドは `build.yaml` のマトリクス（`KobitoKey_left rgbled_adapter`、`KobitoKey_right rgbled_adapter`、`settings_reset`）を `west build` で順に生成する想定です。キー配列は `config/KobitoKey.keymap`、レイアウト図は `config/KobitoKey.json` がソースになります。
 
@@ -10,18 +11,14 @@
 | Layer | 名称 | 主な機能 |
 | --- | --- | --- |
 | 0 | QWERTY | ベース入力 |
-| 1 | Number & Arrow | 数字列、矢印、メディアキー |
-| 2 | Bluetooth & Function | BT ペアリング、ブートローダー、設定操作 |
-| 3 | Auto Mouse | 自動遷移するマウスレイヤーとスクロール処理 |
+| 1 | num+symbol | 数字列、記号 |
+| 2 | shift_symbol+move | シフトを押す記号、矢印、ウィンドウ操作等 |
+| 3 | Auto Mouse | 自動遷移するマウスレイヤー |
+| 4 | Config | 設定レイヤー |
 
 ## 主要ディレクトリ
 - `build.yaml` ― `west build -b seeeduino_xiao_ble -s app -d build` 用のビルドマトリクス。左（`KobitoKey_left rgbled_adapter`）、右（`KobitoKey_right rgbled_adapter`）、`settings_reset` を一括ビルド。
 - `zephyr/module.yml` ― `board_root: config` を宣言し、シールド定義をビルドに含める。
-
-## トラックボール動作
-- 右トラックボール → `sensor_rotation_right` ＋ `zip_temp_layer` のチェーン経由でマウスカーソルを移動。  
-- 左トラックボール → `tb_left_listener` による縦 15 倍／横 6 倍スケーリング＋`zip_xy_to_scroll_mapper` で縦横スクロール（ホイール／ホイール横列の両方を送出）。  
-  - 閾値は `KobitoKey_left.overlay` 内の `threshold = <6>;` を編集するだけで調整可能。
 
 ## `config/boards/shields/KobitoKey` の構成
 
