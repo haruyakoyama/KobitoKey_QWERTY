@@ -14,14 +14,17 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #define DT_DRV_COMPAT zmk_input_processor_dir_keys
 
 #define DIR_KEY_BINDING(idx, inst) ZMK_KEYMAP_EXTRACT_BINDING(idx, inst)
+#define DIR_KEY_BINDING_COUNT 4
 
 enum dir_key_binding_index {
     DIR_KEY_X_POS = 0,
     DIR_KEY_X_NEG,
     DIR_KEY_Y_POS,
     DIR_KEY_Y_NEG,
-    DIR_KEY_BINDING_COUNT,
 };
+
+BUILD_ASSERT(DIR_KEY_BINDING_COUNT == (DIR_KEY_Y_NEG + 1),
+             "DIR_KEY_BINDING_COUNT must match dir key binding enum length");
 
 struct dir_key_state {
     int32_t accumulator;
