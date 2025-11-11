@@ -86,13 +86,19 @@
 
 &tb_right_listener {
     status = "okay";
-
+    /* 通常のマウス移動 + オートマウスレイヤー(3)への自動遷移 */
     input-processors =
-        <&sensor_rotation_right>;
+        <&sensor_rotation_right>,
+        <&zip_temp_layer 3 5000>;
 };
 
 &zip_temp_layer {
     excluded-positions = <
+        5
+        6
+        7
+        8
+        9
         15
         16
         17

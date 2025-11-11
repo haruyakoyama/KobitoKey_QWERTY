@@ -4,8 +4,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: badjeff
-      url-base: https://github.com/badjeff
+    - name: inorichi
+      url-base: https://github.com/inorichi
     - name: hsgw
       url-base: https://github.com/hsgw
     - name: caksoylar # <-- led
@@ -18,12 +18,10 @@ manifest:
       revision: v0.3.0
       import: app/west.yml
 
-    # PMW3610 ドライバ（外部モジュール）
+    # PMW3610 ドライバ（外部モジュール）- automouse-layer/scroll-layers サポート版
     - name: zmk-pmw3610-driver
-      remote: badjeff
+      remote: inorichi
       revision: main
-      # 置き場所を明示したい場合は path を指定（任意）
-      # path: modules/zmk-pmw3610-driver
 
     # Sensor-rotation
     - name: zmk-feature-sensor_rotation
