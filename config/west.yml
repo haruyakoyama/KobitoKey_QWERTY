@@ -4,6 +4,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: petejohanson
+      url-base: https://github.com/petejohanson
     - name: inorichi
       url-base: https://github.com/inorichi
     - name: hsgw
@@ -12,10 +14,10 @@ manifest:
       url-base: https://github.com/caksoylar
 
   projects:
-    # ZMK 本体。公式の app/west.yml を取り込む
+    # ZMK 本体。inorichi ドライバ用に pointers-move-scroll ブランチを使用
     - name: zmk
-      remote: zmkfirmware
-      revision: v0.3.0
+      remote: petejohanson
+      revision: feat/pointers-move-scroll
       import: app/west.yml
 
     # PMW3610 ドライバ（外部モジュール）- automouse-layer/scroll-layers サポート版
