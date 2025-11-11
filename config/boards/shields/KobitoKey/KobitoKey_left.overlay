@@ -84,9 +84,20 @@
   };
 };
 
+/* レイヤー2専用: 右トラックボールをスクロールモードに */
+&tb_right_scroll {
+    status = "okay";
+    layers = <2>;
+    
+    input-processors =
+        <&sensor_rotation_right>,
+        <&zip_xy_to_scroll_mapper>,
+        <&zip_scroll_scaler 1 2>;
+};
+
+/* レイヤー0,1,4など: 通常のマウス移動 + オートマウスレイヤー(3)への自動遷移 */
 &tb_right_listener {
     status = "okay";
-    /* 通常のマウス移動 + オートマウスレイヤー(3)への自動遷移 */
     input-processors =
         <&sensor_rotation_right>,
         <&zip_temp_layer 3 5000>;

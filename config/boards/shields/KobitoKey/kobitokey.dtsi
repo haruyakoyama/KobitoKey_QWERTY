@@ -55,7 +55,13 @@
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&tb_right_split>;
-        
+    };
+
+    /* レイヤー2専用: 右トラックボールのスクロールモード */
+    tb_right_scroll: tb_right_scroll {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&tb_right_split>;
     };
 };
 
