@@ -12,6 +12,11 @@
             bindings = <&kp MINUS>;
             key-positions = <8 9>;
         };
+
+        scroll {
+            bindings = <&mo 2>;
+            key-positions = <16 17>;
+        };
     };
 
     macros {
@@ -57,10 +62,10 @@
 
         default_layer {
             bindings = <
-&kp Q                  &kp W         &kp E             &kp R            &kp T                   &kp Y                     &kp U             &kp I         &kp O    &kp P
-&kp A                  &kp S         &kp D             &kp F             &kp G                   &kp H                     &kp J             &kp K         &kp L    &kp ENTER
-&kp Z                  &kp X         &kp C             &kp V             &kp B                   &kp N                     &kp M             &kp COMMA     &kp DOT  &kp SLASH
-&mt LEFT_SHIFT ESCAPE  &kp LEFT_ALT  &mt LEFT_GUI TAB  &lt 1 LANG2       &mt LEFT_CONTROL SPACE  &mt LEFT_SHIFT BACKSPACE  &lt 2 LANGUAGE_1  &kp LEFT_GUI  &to 4    &mt RIGHT_SHIFT ESCAPE
+&kp Q                  &kp W         &kp E             &kp R        &kp T                   &kp Y                     &kp U             &kp I         &kp O    &kp P
+&kp A                  &kp S         &kp D             &kp F        &kp G                   &kp H                     &kp J             &kp K         &kp L    &kp ENTER
+&kp Z                  &kp X         &kp C             &kp V        &kp B                   &kp N                     &kp M             &kp COMMA     &kp DOT  &kp SLASH
+&mt LEFT_SHIFT ESCAPE  &kp LEFT_ALT  &mt LEFT_GUI TAB  &lt 1 LANG2  &mt LEFT_CONTROL SPACE  &mt LEFT_SHIFT BACKSPACE  &lt 2 LANGUAGE_1  &kp LEFT_GUI  &to 4    &mt RIGHT_SHIFT ESCAPE
             >;
         };
 
@@ -84,8 +89,8 @@
 
         automouse {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &msc SCRL_UP  &mkp MB1  &mkp MB2  &mkp MB3  &kp LEFT_ALT
+&trans  &trans  &trans  &trans  &trans  &trans          &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &msc SCRL_UP    &mkp MB1  &mkp MB2  &mkp MB3  &kp LEFT_ALT
 &trans  &trans  &trans  &trans  &trans  &msc SCRL_DOWN  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans          &trans    &trans    &trans    &mt LEFT_SHIFT ESCAPE
             >;
