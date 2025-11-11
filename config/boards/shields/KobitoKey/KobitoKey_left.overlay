@@ -91,6 +91,7 @@
     /* デフォルト: 通常のマウス移動 + オートマウスレイヤー(3)への自動遷移 */
     input-processors =
         <&sensor_rotation_right>,
+        <&zip_xy_scaler 3 2>,  /* マウス速度を1.5倍に（CPI300 x 1.5 = 実質CPI450相当） */
         <&zip_temp_layer 3 5000>;
     
     /* レイヤー2でのみスクロールモードに切り替え */
@@ -99,7 +100,7 @@
         input-processors =
             <&sensor_rotation_right>,
             <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_scaler 1 2>;
+            <&zip_scroll_scaler 1 15>;  /* 左手と同じ速度に（1/15倍で滑らかに） */
     };
 };
 
