@@ -84,23 +84,23 @@
   };
 };
 
-/* レイヤー2専用: 右トラックボールをスクロールモードに */
-&tb_right_scroll {
-    status = "okay";
-    layers = <2>;
-    
-    input-processors =
-        <&sensor_rotation_right>,
-        <&zip_xy_to_scroll_mapper>,
-        <&zip_scroll_scaler 1 2>;
-};
-
-/* レイヤー0,1,4など: 通常のマウス移動 + オートマウスレイヤー(3)への自動遷移 */
+/* 右トラックボール: 通常はマウス移動 + 自動レイヤー3遷移、レイヤー2ではスクロール */
 &tb_right_listener {
     status = "okay";
+    
+    /* デフォルト: 通常のマウス移動 + オートマウスレイヤー(3)への自動遷移 */
     input-processors =
         <&sensor_rotation_right>,
         <&zip_temp_layer 3 5000>;
+    
+    /* レイヤー2でのみスクロールモードに切り替え */
+    layer_2 {
+        layers = <2>;
+        input-processors =
+            <&sensor_rotation_right>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 2>;
+    };
 };
 
 &zip_temp_layer {
