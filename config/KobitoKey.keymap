@@ -15,7 +15,27 @@
 
         scroll {
             bindings = <&mo 2>;
-            key-positions = <16 17>;
+            key-positions = <17 18>;
+        };
+
+        capslock {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <36 33>;
+        };
+
+        spotlight {
+            bindings = <&kp LG(SPACE)>;
+            key-positions = <18 19>;
+        };
+
+        change_app {
+            bindings = <&kp LG(TAB)>;
+            key-positions = <29 28>;
+        };
+
+        change_tab {
+            bindings = <&kp LC(TAB)>;
+            key-positions = <38 39>;
         };
     };
 
@@ -71,17 +91,17 @@
 
         num+symbol {
             bindings = <
-&none   &kp N7        &kp N8        &kp N9        &kp BACKSPACE  &none   &none           &none          &none             &none
-&none   &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp ENTER      &none   &kp UNDERSCORE  &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-&kp N0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &none          &none   &none           &kp SEMICOLON  &kp SQT           &kp BACKSLASH
-&trans  &trans        &trans        &trans        &trans         &trans  &trans          &trans         &trans            &trans
+&none   &kp N7        &kp N8        &kp N9        &kp BACKSPACE  &none      &none      &none          &none             &none
+&none   &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp ENTER      &kp GRAVE  &kp MINUS  &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&kp N0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &none          &none      &none      &kp SEMICOLON  &kp SQT           &kp BACKSLASH
+&trans  &trans        &trans        &trans        &trans         &trans     &trans     &trans         &trans            &trans
             >;
         };
 
         shift_symbol+move {
             bindings = <
 &kp EXCLAMATION     &kp AT_SIGN  &kp HASH              &kp DOLLAR            &kp PERCENT     &kp CARET             &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp LG(LEFT_ARROW)  &kp LEFT     &kp UP_ARROW          &kp RIGHT             &kp LG(RIGHT)   &kp LG(SPACE)         &kp MINUS              &kp PLUS      &kp LEFT_BRACE        &kp RIGHT_BRACE
+&kp LG(LEFT_ARROW)  &kp LEFT     &kp UP_ARROW          &kp RIGHT             &kp LG(RIGHT)   &kp TILDE             &kp UNDER              &kp PLUS      &kp LEFT_BRACE        &kp RIGHT_BRACE
 &windowleft         &none        &kp DOWN              &none                 &windowright    &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &kp COLON     &kp DOUBLE_QUOTES     &kp PIPE
 &trans              &trans       &kp LS(LG(NUMBER_3))  &kp LG(LS(NUMBER_4))  &kp LG(LS(N5))  &trans                &trans                 &trans        &trans                &trans
             >;
@@ -89,10 +109,10 @@
 
         automouse {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans          &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &msc SCRL_UP    &mkp MB1  &mkp MB2  &mkp MB3  &kp LEFT_ALT
-&trans  &trans  &trans  &trans  &trans  &msc SCRL_DOWN  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans          &trans    &trans    &trans    &mt LEFT_SHIFT ESCAPE
+&trans  &trans  &trans  &trans  &trans  &trans          &trans    &kp LEFT_ALT  &kp LEFT_SHIFT  &trans
+&trans  &trans  &trans  &trans  &trans  &msc SCRL_UP    &mkp MB1  &mkp MB2      &mkp MB3        &trans
+&trans  &trans  &trans  &trans  &trans  &msc SCRL_DOWN  &trans    &trans        &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans          &trans    &trans        &trans          &mt LEFT_SHIFT ESCAPE
             >;
         };
 
